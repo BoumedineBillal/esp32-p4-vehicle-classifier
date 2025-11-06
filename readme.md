@@ -6,7 +6,9 @@ Production-ready vehicle classification on ESP32-P4 microcontroller using INT8-q
 [![ESP-IDF](https://img.shields.io/badge/ESP--IDF-v5.x-blue)](https://github.com/espressif/esp-idf)
 [![Hardware](https://img.shields.io/badge/Hardware-ESP32--P4-green)](https://www.espressif.com/en/products/socs/esp32-p4)
 
-[Watch demo (MP4)](demo/demo.mp4)
+## 📹 Demo Video
+
+[![Demo](https://img.youtube.com/vi/fISUXHYNV20/maxresdefault.jpg)](https://www.youtube.com/watch?v=fISUXHYNV20)
 
 ---
 
