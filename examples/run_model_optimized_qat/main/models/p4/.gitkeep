@@ -1,0 +1,2 @@
+# This file ensures the models/p4 directory is tracked by git
+# Model files (.espdl) will be copied here during project generation

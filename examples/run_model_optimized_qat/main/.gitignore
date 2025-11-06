@@ -1,0 +1,20 @@
+# ESP-IDF build artifacts
+build/
+*.o
+*.d
+*.a
+
+# Model files (copied during generation)
+*.espdl
+
+# Test images (copied during generation)
+*.jpg
+*.jpeg
+*.png
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~

@@ -1,0 +1,9 @@
+## IDF Component Manager Manifest File
+## Auto-generated for ESP32-P4 Vehicle Classifier
+## Variant: current
+## Quantization: qat
+
+dependencies:
+  espressif/esp-dl:
+    version: "^3.1.0"
+    override_path: "../../deployment/dependencies/esp-dl-master/esp-dl-master/esp-dl"

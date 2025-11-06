@@ -1,0 +1,404 @@
+############
+# Patterns #
+############
+
+.patterns-gitlab-ci: &patterns-gitlab-ci
+  - ".gitlab/ci/*"
+
+# esp-dl folder, in the alphabetic order
+.patterns-esp-dl: &patterns-esp-dl
+  - "esp-dl/**/*"
+
+.patterns-esp-dl_dl: &patterns-esp-dl_dl
+  - "esp-dl/dl/**/*"
+
+.patterns-esp-dl_dl_base: &patterns-esp-dl_dl_base
+  - "esp-dl/dl/base/**/*"
+
+.patterns-esp-dl_dl_typedef: &patterns-esp-dl_dl_typedef
+  - "esp-dl/dl/typedef/**/*"
+
+.patterns-esp-dl_dl_model: &patterns-esp-dl_dl_model
+  - "esp-dl/dl/model/**/*"
+
+.patterns-esp-dl_dl_module: &patterns-esp-dl_dl_module
+  - "esp-dl/dl/module/**/*"
+
+.patterns-esp-dl_fbs_loader: &patterns-esp-dl_fbs_loader
+  - "esp-dl/fbs_loader/**/*"
+
+.patterns-esp-dl_vision: &patterns-esp-dl_vision
+  - "esp-dl/vision/**/*"
+
+.patterns-esp-dl_image: &patterns-esp-dl_image
+  - "esp-dl/vision/image/*"
+
+# models folder, in the alphabetic order
+.patterns-model_human_face_recognition: &patterns-model_human_face_recognition
+  - "models/human_face_recognition/**/*"
+
+.patterns-model_human_face_detect: &patterns-model_human_face_detect
+  - "models/human_face_detect/**/*"
+
+.patterns-model_imagenet_cls: &patterns-model_imagenet_cls
+  - "models/imagenet_cls/**/*"
+
+.patterns-model_pedestrian_detect: &patterns-model_pedestrian_detect
+  - "models/pedestrian_detect/**/*"
+
+.patterns-model_coco_detect: &patterns-model_coco_detect
+  - "models/coco_detect/**/*"
+
+.patterns-model_coco_pose: &patterns-model_coco_pose
+  - "models/coco_pose/**/*"
+
+.patterns-model_cat_detect: &patterns-model_cat_detect
+  - "models/cat_detect/**/*"
+
+.patterns-model_dog_detect: &patterns-model_dog_detect
+  - "models/dog_detect/**/*"
+
+.patterns-model_color_detect: &patterns-model_color_detect
+  - "models/color_detect/**/*"
+
+# examples folder, in the alphabetic order
+.patterns-example_human_face_recognition: &patterns-example_human_face_recognition
+  - "examples/human_face_recognition/**/*"
+
+.patterns-example_mobilenetv2_cls: &patterns-example_mobilenetv2_cls
+  - "examples/mobilenetv2_cls/**/*"
+
+.patterns-example_human_face_detect: &patterns-example_human_face_detect
+  - "examples/human_face_detect/**/*"
+
+.patterns-example_pedestrian_detect: &patterns-example_pedestrian_detect
+- "examples/pedestrian_detect/**/*"
+
+.patterns-example_yolo11_detect: &patterns-example_yolo11_detect
+- "examples/yolo11_detect/**/*"
+
+.patterns-example_yolo11_pose: &patterns-example_yolo11_pose
+- "examples/yolo11_pose/**/*"
+
+.patterns-example_cat_detect: &patterns-example_cat_detect
+- "examples/cat_detect/**/*"
+
+.patterns-example_dog_detect: &patterns-example_dog_detect
+- "examples/dog_detect/**/*"
+
+.patterns-example_color_detect: &patterns-example_color_detect
+- "examples/color_detect/**/*"
+
+.patterns-example_how_to_run_model: &patterns-example_how_to_run_model
+- "examples/tutorial/how_to_run_model/**/*"
+
+.patterns-example_model_in_flash_partition: &patterns-example_model_in_flash_partition
+- "examples/tutorial/how_to_load_test_profile_model/model_in_flash_partition/**/*"
+
+.patterns-example_model_in_flash_rodata: &patterns-example_model_in_flash_rodata
+- "examples/tutorial/how_to_load_test_profile_model/model_in_flash_rodata/**/*"
+
+.patterns-example_model_in_sdcard: &patterns-example_model_in_sdcard
+- "examples/tutorial/how_to_load_test_profile_model/model_in_sdcard/**/*"
+
+.patterns-example_how_to_run_streaming_model: &patterns-example_how_to_run_streaming_model
+- "examples/tutorial/how_to_run_streaming_model/**/*"
+
+# tool forder
+.patterns-tool_ops_test: &patterns-tool_ops_test
+  - "tools/ops_test/config/op_cfg.toml"
+  - "tools/ops_test/gen_test_cases.py"
+  - "tools/ops_test/ops_cases.py"
+
+.patterns-test_dl_fft: &patterns-test_dl_fft
+  - "tools/dl_fft/**/*"
+
+.patterns-test_dl_audio: &patterns-test_dl_audio
+  - "esp-dl/dl_audio/**/*"
+
+##############
+# if anchors #
+##############
+.if-protected: &if-protected
+  if: '($CI_COMMIT_REF_NAME == "master" || $CI_COMMIT_BRANCH =~ /^release\/v/ || $CI_COMMIT_TAG =~ /^v\d+\.\d+(\.\d+)?($|-)/)'
+
+.if-dev-push: &if-dev-push
+  if: '$CI_COMMIT_REF_NAME != "master" && $CI_COMMIT_BRANCH !~ /^release\/v/ && $CI_COMMIT_TAG !~ /^v\d+\.\d+(\.\d+)?($|-)/ && ($CI_PIPELINE_SOURCE == "push" || $CI_PIPELINE_SOURCE == "merge_request_event")'
+
+##################
+# Auto Generated #
+##################
+.if-label-build: &if-label-build
+  if: '$CI_MERGE_REQUEST_LABELS =~ /^(?:[^,\n\r]+,)*build(?:,[^,\n\r]+)*$/i'
+
+.if-label-pre_check: &if-label-pre_check
+  if: '$BOT_LABEL_PRE_CHECK || $CI_MERGE_REQUEST_LABELS =~ /^(?:[^,\n\r]+,)*pre_check(?:,[^,\n\r]+)*$/i'
+
+.patterns-docs_md: &patterns-docs_md
+  - "**/*.md"
+
+.patterns-docs: &patterns-docs
+  - "docs/**/*"
+
+.patterns-docs_inc: &patterns-docs_inc
+  - esp-dl/fbs_loader/include/fbs_loader.hpp \
+  - esp-dl/fbs_loader/include/fbs_model.hpp \
+  - esp-dl/dl/module/include/dl_module_creator.hpp \
+  - esp-dl/dl/module/include/dl_module_base.hpp \
+  - esp-dl/dl/tensor/include/dl_tensor_base.hpp \
+  - esp-dl/dl/model/include/dl_memory_manager_greedy.hpp \
+  - esp-dl/dl/model/include/dl_memory_manager.hpp \
+  - esp-dl/dl/model/include/dl_model_base.hpp \
+
+# rules for espdl op test
+.rules:build:espdl_ops:
+  rules:
+    - <<: *if-protected
+    - <<: *if-label-build
+    - <<: *if-dev-push
+      changes: *patterns-esp-dl_dl
+    - <<: *if-dev-push
+      changes: *patterns-esp-dl_fbs_loader
+    - <<: *if-dev-push
+      changes: *patterns-gitlab-ci
+
+# rules for dl image
+.rules:build:dl_image:
+  rules:
+    - <<: *if-protected
+    - <<: *if-label-build
+    - <<: *if-dev-push
+      changes: *patterns-esp-dl_image
+    - <<: *if-dev-push
+      changes: *patterns-gitlab-ci
+
+# rules for examples
+.rules:build:example_human_face_recognition:
+  rules:
+    - <<: *if-protected
+    - <<: *if-label-build
+    - <<: *if-dev-push
+      changes: *patterns-esp-dl
+    - <<: *if-dev-push
+      changes: *patterns-model_human_face_recognition
+    - <<: *if-dev-push
+      changes: *patterns-example_human_face_recognition
+    - <<: *if-dev-push
+      changes: *patterns-gitlab-ci
+
+.rules:build:example_human_face_detect:
+  rules:
+    - <<: *if-protected
+    - <<: *if-label-build
+    - <<: *if-dev-push
+      changes: *patterns-esp-dl
+    - <<: *if-dev-push
+      changes: *patterns-model_human_face_detect
+    - <<: *if-dev-push
+      changes: *patterns-example_human_face_detect
+    - <<: *if-dev-push
+      changes: *patterns-gitlab-ci
+
+.rules:build:example_mobilenetv2_cls:
+  rules:
+    - <<: *if-protected
+    - <<: *if-label-build
+    - <<: *if-dev-push
+      changes: *patterns-esp-dl
+    - <<: *if-dev-push
+      changes: *patterns-example_mobilenetv2_cls
+    - <<: *if-dev-push
+      changes: *patterns-gitlab-ci
+
+.rules:build:example_pedestrian_detect:
+  rules:
+    - <<: *if-protected
+    - <<: *if-label-build
+    - <<: *if-dev-push
+      changes: *patterns-esp-dl
+    - <<: *if-dev-push
+      changes: *patterns-model_pedestrian_detect
+    - <<: *if-dev-push
+      changes: *patterns-example_pedestrian_detect
+    - <<: *if-dev-push
+      changes: *patterns-gitlab-ci
+
+.rules:build:example_yolo11_detect:
+  rules:
+    - <<: *if-protected
+    - <<: *if-label-build
+    - <<: *if-dev-push
+      changes: *patterns-esp-dl
+    - <<: *if-dev-push
+      changes: *patterns-model_coco_detect
+    - <<: *if-dev-push
+      changes: *patterns-example_yolo11_detect
+    - <<: *if-dev-push
+      changes: *patterns-gitlab-ci
+
+.rules:build:example_yolo11_pose:
+  rules:
+    - <<: *if-protected
+    - <<: *if-label-build
+    - <<: *if-dev-push
+      changes: *patterns-esp-dl
+    - <<: *if-dev-push
+      changes: *patterns-model_coco_pose
+    - <<: *if-dev-push
+      changes: *patterns-example_yolo11_pose
+    - <<: *if-dev-push
+      changes: *patterns-gitlab-ci
+
+.rules:build:example_cat_detect:
+  rules:
+    - <<: *if-protected
+    - <<: *if-label-build
+    - <<: *if-dev-push
+      changes: *patterns-esp-dl
+    - <<: *if-dev-push
+      changes: *patterns-model_cat_detect
+    - <<: *if-dev-push
+      changes: *patterns-example_cat_detect
+    - <<: *if-dev-push
+      changes: *patterns-gitlab-ci
+
+.rules:build:example_dog_detect:
+  rules:
+    - <<: *if-protected
+    - <<: *if-label-build
+    - <<: *if-dev-push
+      changes: *patterns-esp-dl
+    - <<: *if-dev-push
+      changes: *patterns-model_dog_detect
+    - <<: *if-dev-push
+      changes: *patterns-example_dog_detect
+    - <<: *if-dev-push
+      changes: *patterns-gitlab-ci
+
+.rules:build:example_color_detect:
+  rules:
+    - <<: *if-protected
+    - <<: *if-label-build
+    - <<: *if-dev-push
+      changes: *patterns-esp-dl
+    - <<: *if-dev-push
+      changes: *patterns-model_color_detect
+    - <<: *if-dev-push
+      changes: *patterns-example_color_detect
+    - <<: *if-dev-push
+      changes: *patterns-gitlab-ci
+
+.rules:build:example_how_to_run_model:
+  rules:
+    - <<: *if-protected
+    - <<: *if-label-build
+    - <<: *if-dev-push
+      changes: *patterns-example_how_to_run_model
+    - <<: *if-dev-push
+      changes: *patterns-gitlab-ci
+
+.rules:build:example_model_in_flash_partition:
+  rules:
+    - <<: *if-protected
+    - <<: *if-label-build
+    - <<: *if-dev-push
+      changes: *patterns-example_model_in_flash_partition
+    - <<: *if-dev-push
+      changes: *patterns-gitlab-ci
+
+.rules:build:example_model_in_flash_rodata:
+  rules:
+    - <<: *if-protected
+    - <<: *if-label-build
+    - <<: *if-dev-push
+      changes: *patterns-example_model_in_flash_rodata
+    - <<: *if-dev-push
+      changes: *patterns-gitlab-ci
+
+.rules:build:example_model_in_sdcard:
+  rules:
+    - <<: *if-protected
+    - <<: *if-label-build
+    - <<: *if-dev-push
+      changes: *patterns-example_model_in_sdcard
+    - <<: *if-dev-push
+      changes: *patterns-gitlab-ci
+
+.rules:build:example_how_to_run_streaming_model:
+  rules:
+    - <<: *if-protected
+    - <<: *if-label-build
+    - <<: *if-dev-push
+      changes: *patterns-example_how_to_run_streaming_model
+    - <<: *if-dev-push
+      changes: *patterns-gitlab-ci
+
+.rules:build:test_dl_fft:
+  rules:
+    - <<: *if-protected
+    - <<: *if-label-build
+    - <<: *if-dev-push
+      changes: *patterns-test_dl_fft
+    - <<: *if-dev-push
+      changes: *patterns-gitlab-ci
+
+.rules:build:test_dl_audio:
+  rules:
+    - <<: *if-protected
+    - <<: *if-label-build
+    - <<: *if-dev-push
+      changes: *patterns-test_dl_fft
+    - <<: *if-dev-push
+      changes: *patterns-test_dl_audio
+    - <<: *if-dev-push
+      changes: *patterns-gitlab-ci
+
+.rules:pre_check:readme:
+  rules:
+    - <<: *if-protected
+    - <<: *if-label-pre_check
+    - <<: *if-dev-push
+      changes: *patterns-docs_md
+
+# rules for docs
+.rules:build:docs:
+  rules:
+    - <<: *if-protected
+    - <<: *if-dev-push
+      changes: *patterns-docs
+    - <<: *if-dev-push
+      changes: *patterns-docs_inc
+    - <<: *if-dev-push
+      changes: *patterns-gitlab-ci
+
+.rules:deploy:docs_preview:
+  rules:
+    - <<: *if-protected
+    - <<: *if-dev-push
+      changes: *patterns-docs
+    - <<: *if-dev-push
+      changes: *patterns-docs_inc
+    - <<: *if-dev-push
+      changes: *patterns-gitlab-ci
+
+.rules:deploy:docs_production:
+  rules:
+    - <<: *if-protected
+
+.rules:deploy:push_to_github:
+  rules:
+    - <<: *if-protected
+
+# relus for tools
+.rules:gen:ops_test:
+  rules:
+    - <<: *if-protected
+    - <<: *if-label-build
+    - <<: *if-dev-push
+      changes: *patterns-tool_ops_test
+    - <<: *if-dev-push
+      changes: *patterns-esp-dl_dl
+    - <<: *if-dev-push
+      changes: *patterns-esp-dl_fbs_loader
+    - <<: *if-dev-push
+      changes: *patterns-gitlab-ci
