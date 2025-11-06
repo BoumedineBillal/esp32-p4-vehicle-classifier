@@ -8,7 +8,7 @@ Production-ready vehicle classification on ESP32-P4 microcontroller using INT8-q
 
 ## 📹 Demo Video
 
-[![Demo](https://img.youtube.com/vi/fISUXHYNV20/maxresdefault.jpg)](https://www.youtube.com/watch?v=fISUXHYNV20)
+[![Demo](https://img.youtube.com/vi/fISUXHYNV20/0.jpg)](https://www.youtube.com/watch?v=fISUXHYNV20)
 
 ---
 
